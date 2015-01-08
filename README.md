@@ -2,20 +2,13 @@
 
 > Run Force.com apex tests using the Force.com Tooling API.
 
+> Warning: This is experimental and is not production ready and includes no unit tests. Use at your own risk.
+
 ## Getting Started
 This plugin requires Grunt.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```shell
-npm install grunt-apex-tests --save-dev
-```
-
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
-
-```js
-grunt.loadNpmTasks('grunt-apex-tests');
-```
 
 ## The "apex_tests" task
 
@@ -29,7 +22,7 @@ grunt.initConfig({
       // Task-specific options go here.
     },
     your_target: {
-      // Target-specific file lists and/or options go here.
+      // Target-specific  options go here.
     },
   },
 })
@@ -37,50 +30,58 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.patterns
+Type: `Array`
+Default value: `['%\\_Test']`
+
+An array of patterns used to contruct the query of test classes. This is inserted into a SOQL Like comparison.
+
+#### options.exactNames
+Type: `Array`
+Default value: `null`
+
+An array of exact class names to query for.
+
+#### options.namespacePrefixes
+Type: `Array`
+Default value: `[null]`
+
+An array of namespaces to filter the classnames by.
+
+#### options.credentials
+Type: `Object`
+
+An object containing the Salesforce server and authentication credentials.
+
+#### options.credentials.server
 Type: `String`
-Default value: `',  '`
+Default value: `'https://test.salesforce.com'`
 
-A string value that is used to do something with whatever.
+Salesforce endpoint to authenticate to.
 
-#### options.punctuation
+#### options.credentials.username
 Type: `String`
-Default value: `'.'`
+Default value: `null`
 
-A string value that is used to do something else with whatever else.
+Required: The Salesforce username used to connect.
 
-### Usage Examples
+#### options.credentials.password
+Type: `String`
+Default value: `null`
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+Required: Salesforce password and/or security token.
 
-```js
-grunt.initConfig({
-  apex_tests: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+#### options.credentials.clientId
+Type: `String`
+Default value: `null`
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+Required: Salesforce clientId of the Connected App.
 
-```js
-grunt.initConfig({
-  apex_tests: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
+#### options.credentials.clientSecret
+Type: `String`
+Default value: `null`
+
+Required: Client secret for the Connected App.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
