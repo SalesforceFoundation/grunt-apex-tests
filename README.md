@@ -83,6 +83,24 @@ Default value: `null`
 
 Required: Client secret for the Connected App.
 
+### Usage Examples
+
+In this example, we query for all test classes with names containing `_Test` and `UnitTest` along with the specific class name `Test_someOldClassWithWrongName`.
+
+```js
+grunt.initConfig({
+  apex_tests: {
+    options: {
+      patterns: ['%\\_Test', 'UnitTest'],
+      exactNames: ['Test_someOldClassWithWrongName'],
+      credentials: {
+        ...
+      }
+    },
+  },
+})
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
@@ -90,4 +108,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 _(Nothing yet)_
 
 ## License
-Copyright (c) 2015 Ryan Foster <ryan.foster@salesforce.com>. Licensed under the MIT license.
+Copyright (c) 2015 Ryan Foster <ryan.foster@salesforce.com>, Salesforce Foundation. Licensed under the MIT license.
