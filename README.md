@@ -91,7 +91,7 @@ In this example, we query for all test classes with names containing `_Test` and
 grunt.initConfig({
   apex_tests: {
     options: {
-      patterns: ['%\\_Test', 'UnitTest'],
+      patterns: ['%\\_Test', '%UnitTest%'],
       exactNames: ['Test_someOldClassWithWrongName'],
       credentials: {
         ...
