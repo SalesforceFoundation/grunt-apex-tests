@@ -69,7 +69,7 @@ module.exports = function (grunt) {
       }
 
       if (patterns) {
-        q += 'Name LIKE \'' + patterns.join('\' OR Name LIKE ') + '\'';
+        q += 'Name LIKE \'' + patterns.join('\' OR Name LIKE \'') + '\'';
       }
 
       if (patterns && exacts) {
