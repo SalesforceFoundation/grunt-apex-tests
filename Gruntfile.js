@@ -53,13 +53,16 @@ module.exports = function (grunt) {
 
     // Configuration to be run (and then tested).
     apex_tests: {
+      options: {
+        credentials: credentials
+      },
       test: {
         options: {
-          patterns: ['%\\_Test'],
-          exactNames: null,
-          credentials: credentials
+          patterns: null,
+          exactNames: ['Volunteerforce1ControllerTest']
         }
-      }
+      },
+      
     },
 
     // Unit tests.

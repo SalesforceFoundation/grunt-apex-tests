@@ -26,10 +26,11 @@ module.exports = function (grunt) {
 
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      patterns: ['%\\_Test'],
+      patterns: null,
       exactNames: null,
       namespacePrefixes: [null],
       coverage: false,
+      pollDelay: 6000,
       credentials: {
         server: 'https://test.salesforce.com',
         username: null,
@@ -164,7 +165,7 @@ module.exports = function (grunt) {
               }
             }
           });
-        }, 2000);
+        }, options.pollDelay);
       }
       runJob();
     }
@@ -187,7 +188,7 @@ module.exports = function (grunt) {
               getStatus(jobId);
             }
           });
-        }, 2000);
+        }, options.pollDelay);
       }
       getStatus(jobId);
     }
