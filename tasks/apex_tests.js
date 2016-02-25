@@ -276,8 +276,9 @@ module.exports = function (grunt) {
           grunt.log.writeln('\nFailures:\n=========');
           _.each(testClass.results, function(result) {
             if (result.Outcome !== 'Pass') {
-              grunt.log.error(result.Outcome + ' ' + testClass.Name+'.'+result.MethodName+':');
-              grunt.log.errorlns(result.Message + '\n');
+              grunt.log.writeln(result.Outcome + ' ' + testClass.Name+'.'+result.MethodName+': ');
+              grunt.log.writeln(result.Message + '\n');
+              grunt.log.writeln(result.StackTrace + '\n');
             }
           });
         }
