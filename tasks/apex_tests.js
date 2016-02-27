@@ -278,7 +278,7 @@ module.exports = function (grunt) {
             if (result.Outcome !== 'Pass') {
               grunt.log.error(result.Outcome + ' ' + testClass.Name+'.'+result.MethodName+': ');
               grunt.log.errorlns(result.Message + '\n');
-              grunt.log.errorlns(result.StackTrace + '\n');
+              grunt.log.writelns(result.StackTrace + '\n');
             }
           });
         }
